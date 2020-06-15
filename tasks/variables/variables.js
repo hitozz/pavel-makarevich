@@ -2,13 +2,13 @@
  * TODO create variable named int and set value equal to 1
 */
 let int = 1;
-console.log("int", int);
+console.log(int);
 
 /**
  *  TODO create variable named int2 and set value equal int plus 1
  */
-let int2 = int +1;
-console.log("int2", int+1);
+let int2 = ++int;
+console.log(int2);
 /**
  * TODO create variable named str and set value equal to "John"
  */
@@ -46,6 +46,4 @@ human.lastName = "Dou";
  * TODO set new key of human object named fullName and value of concatenation of firstName and lastName values
  */
 human.fullName =`${human.firstName} ${human.lastName}`;
-// console.log(human.firstName);
-// console.log(human.lastName);
 console.log(human.fullName);
