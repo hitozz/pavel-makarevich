@@ -23,15 +23,13 @@ const person = {firstName: "John", lastName: "Dou"};
 function getFullName(object) {
 	return (object.firstName + " " + object.lastName);
 }
-person.fullName =`${person.firstName} ${person.lastName}`;
-console.log(person.fullName);
 
 /**
  * write fuction that checks is number is odd
  * true if odd, false if even
  */
 function isOdd(n) {
-	return (n % 2 === 0)? false : true;
+	return (n % 2 !== 0);
 }
 
 /**
@@ -66,14 +64,10 @@ console.log(getGoogle(5));
  *    age: 42
  * }
  */
-function getUser(firstName, lastName, age) {
-	return {
-		"firstName": firstName,
-		"lastName": lastName,
-		"age": age
-	};
+function getUser(firstName, lastName = null, age = null) {
+	return {firstName: firstName, lastName: lastName, age: age};
 }
-
+console.log(getUser('John'));
 /**
  * write function that calculates total path traveled.
  * path represended as array of objects with field distance and direction
@@ -95,7 +89,7 @@ function getTotalPath(path) {
  * @param {percentage} num 
  */
 
-function discountFunction(amount) {
+function discountFunction(percentage) {
 	const discountRate = percentage / 100;
 	return function (amount) {
       return (1 - discountRate) * amount;
@@ -115,12 +109,14 @@ const myObject = {
 	age: 25,
 	friends: ['Mike', 'Alan', 'Daniel'],
 	keys() {
-		//write your code here
+		const keysArray = Object.keys(this);
+		for (const item of keysArray) {
+			console.log(item);
+		}
 	},
 	call() {
-		//write your code here
+		return `My name is ${this.name} ${this.lastName} and I am ${this.age} years old. My best friend is ${this.friends.pop()}`;
 	}
-
 };
 
 module.exports = {
