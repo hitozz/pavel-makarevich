@@ -3,8 +3,12 @@
  *
  */
 function add(a, b) {
-
+	return (a + b);
 }
+
+const result = add(1,2);
+console.log(result);
+console.log(add(-1,-2));
 
 /**
  * write function that return first and last name of given object
@@ -14,16 +18,20 @@ function add(a, b) {
  *    lastName: "Dou"
  * }
  */
-function getFullName(object) {
+const person = {firstName: "John", lastName: "Dou"};
 
+function getFullName(object) {
+	return (object.firstName + " " + object.lastName);
 }
+person.fullName =`${person.firstName} ${person.lastName}`;
+console.log(person.fullName);
 
 /**
  * write fuction that checks is number is odd
  * true if odd, false if even
  */
 function isOdd(n) {
-
+	return (n % 2 === 0)? false : true;
 }
 
 /**
@@ -31,7 +39,12 @@ function isOdd(n) {
  * e.g ["one", "two", "three"] should return one
  */
 function getShortest(wordArray) {
-
+	let result = wordArray[0];
+	for (let i = 1; i < wordArray.length; i++) {
+		const x = wordArray[i];
+		result = (result.length > x.length) ? x : result;
+	}
+	return result;
 }
 
 /**
@@ -39,8 +52,10 @@ function getShortest(wordArray) {
  * e.g getGoogle(5) should return "gooooogle"
  */
 function getGoogle(n) {
-
+	const o = "o";
+	return `g${o.repeat(n)}gle`;
 }
+console.log(getGoogle(5));
 
 /**
  * write function that returns object based on given information (params may be null)
@@ -52,7 +67,11 @@ function getGoogle(n) {
  * }
  */
 function getUser(firstName, lastName, age) {
-
+	return {
+		"firstName": firstName,
+		"lastName": lastName,
+		"age": age
+	};
 }
 
 /**
@@ -62,7 +81,11 @@ function getUser(firstName, lastName, age) {
  */
 
 function getTotalPath(path) {
-
+	let totalPath = 0;
+	for (const object of path) {
+		totalPath += object.distance;
+	}
+	return totalPath;
 }
 
 /**
@@ -73,7 +96,10 @@ function getTotalPath(path) {
  */
 
 function discountFunction(amount) {
-
+	const discountRate = percentage / 100;
+	return function (amount) {
+      return (1 - discountRate) * amount;
+	}
 }
 
 /**
