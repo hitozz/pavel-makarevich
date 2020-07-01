@@ -3,8 +3,12 @@
  *
  */
 function add(a, b) {
-
+	return (a + b);
 }
+
+const result = add(1,2);
+console.log(result);
+console.log(add(-1,-2));
 
 /**
  * write function that return first and last name of given object
@@ -14,8 +18,10 @@ function add(a, b) {
  *    lastName: "Dou"
  * }
  */
-function getFullName(object) {
+const person = {firstName: "John", lastName: "Dou"};
 
+function getFullName(object) {
+	return (object.firstName + " " + object.lastName);
 }
 
 /**
@@ -23,7 +29,7 @@ function getFullName(object) {
  * true if odd, false if even
  */
 function isOdd(n) {
-
+	return (n % 2 !== 0);
 }
 
 /**
@@ -31,7 +37,12 @@ function isOdd(n) {
  * e.g ["one", "two", "three"] should return one
  */
 function getShortest(wordArray) {
-
+	let result = wordArray[0];
+	for (let i = 1; i < wordArray.length; i++) {
+		const x = wordArray[i];
+		result = (result.length > x.length) ? x : result;
+	}
+	return result;
 }
 
 /**
@@ -39,8 +50,10 @@ function getShortest(wordArray) {
  * e.g getGoogle(5) should return "gooooogle"
  */
 function getGoogle(n) {
-
+	const o = "o";
+	return `g${o.repeat(n)}gle`;
 }
+console.log(getGoogle(5));
 
 /**
  * write function that returns object based on given information (params may be null)
@@ -51,10 +64,10 @@ function getGoogle(n) {
  *    age: 42
  * }
  */
-function getUser(firstName, lastName, age) {
-
+function getUser(firstName, lastName = null, age = null) {
+	return {firstName: firstName, lastName: lastName, age: age};
 }
-
+console.log(getUser('John'));
 /**
  * write function that calculates total path traveled.
  * path represended as array of objects with field distance and direction
@@ -62,7 +75,11 @@ function getUser(firstName, lastName, age) {
  */
 
 function getTotalPath(path) {
-
+	let totalPath = 0;
+	for (const object of path) {
+		totalPath += object.distance;
+	}
+	return totalPath;
 }
 
 /**
@@ -72,8 +89,11 @@ function getTotalPath(path) {
  * @param {percentage} num 
  */
 
-function discountFunction(amount) {
-
+function discountFunction(percentage) {
+	const discountRate = percentage / 100;
+	return function (amount) {
+      return (1 - discountRate) * amount;
+	}
 }
 
 /**
@@ -89,12 +109,14 @@ const myObject = {
 	age: 25,
 	friends: ['Mike', 'Alan', 'Daniel'],
 	keys() {
-		//write your code here
+		const keysArray = Object.keys(this);
+		for (const item of keysArray) {
+			console.log(item);
+		}
 	},
 	call() {
-		//write your code here
+		return `My name is ${this.name} ${this.lastName} and I am ${this.age} years old. My best friend is ${this.friends.pop()}`;
 	}
-
 };
 
 module.exports = {
