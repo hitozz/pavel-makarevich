@@ -7,14 +7,15 @@ function reverseString(str){
   if (typeof str !== "string"){
     return 'This is not a string!';
   } else {
-    str = str.split("");
-    str = str.reverse();
-    str = str.join("");
-    return str;
+    return str.split("").reverse().join(""); //update to do the code below in one line
+    // str = str.split("");
+    // str = str.reverse();
+    // str = str.join("");
+    // return str;
   }
 }
 console.log(reverseString("abcde"));
-console.log(reverseString(12345, error));
+console.log(reverseString(12345));
 
 /**
  * 1. Calculate a century by given year
@@ -43,7 +44,7 @@ console.log(centuryFromYear(2020));
  */
 function strCount(str, char) {
     const regex = new RegExp(char, 'g');
-    let result = str.match(regex);
+    const result = str.match(regex);
     return result ? result.length : 0;
   }
   console.log (strCount("makarevich", "a"));
@@ -84,7 +85,7 @@ console.log(replace10 ("8107104"));
  * console.log(replaceConfidential("lorem [ipsum] si dolor")) // lorem [CONFIDENTIAL] si dolor
  */
 function replaceConfidential(text) {
-  const regex = /\[(.*?)\]/g;
+  const regex = /\[.*?\]/g;
   return text.replace (  regex, "[CONFIDENTIAL]")
 }
 console.log(replaceConfidential("lorem [ipsum] si dolor"));
