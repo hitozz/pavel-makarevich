@@ -14,3 +14,23 @@
  * Please NOTE, that you should omit the .html extension
  * Please do the task in the scope of the file. Create a pull request a share it with your mentor.
  */
+
+const test = require('./test.json');
+const data = test.list.entries.map(function (item) {
+    return {
+        docId: `http://doc.epam.com/${item.entry.name.replace(/\.html/, '')}`
+    };
+});
+
+const fs = require('fs');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'parsed.json');
+
+const stringified = JSON.stringify(data);
+
+fs.writeFile(filePath, stringified, err => {
+    if (err) {
+        throw err;
+    }
+});
